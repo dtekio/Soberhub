@@ -1,0 +1,104 @@
+{% include "header.html" %}
+
+<header class="masthead">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1 class="content">Калькулятор</h1>
+          <span class="subheading">Оцените свое потребление ресурсов</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="mb-3">
+          <label for="electricity" class="form-label"
+            >Потребление электричества (килоВатт*час в месяц)</label
+          >
+          <input type="number" class="form-control" id="electricity" />
+        </div>
+        <div class="mb-3">
+          <label for="gas" class="form-label"
+            >Потребление газа (кубических метров в месяц)</label
+          >
+          <input type="number" class="form-control" id="gas" />
+        </div>
+        <div class="mb-3">
+          <label for="fuel" class="form-label"
+            >Потребление топлива (бензина) (литров в день)</label
+          >
+          <input type="number" class="form-control" id="fuel" />
+        </div>
+        <div class="mb-3">
+          <label for="water" class="form-label">Потребление воды (литров в день)</label>
+          <input type="number" class="form-control" id="water" />
+        </div>
+
+        <button class="btn btn-primary" onclick="calculate()">
+          Подтвердить
+        </button> <br>
+      <p><span id="result"></span></p>
+      <br>
+      <p>Существует множество способов снижения потребления воды, газа, электричества и бензина. Некоторые из них могут включать:<br>
+
+        Водосбережение:<br>
+        <ul>
+            <li>Поддерживать краны в исправном состоянии и убедиться, что они нигде не течут.</li>
+            <li>Сократить время в душе и использовать экономичные насадки.</li>
+            <li>Использовать моющие средства, которые не требуют большого количества воды для полоскания.</li>
+          </ul>
+
+          Энергосбережение:<br>
+          <ul>
+            <li>Использовать светодиодные или компактные люминесцентные лампы вместо обычных лампочек.</li>
+            <li>Выключать электроприборы, когда они не используются.</li>
+            <li>Установить термостаты и регуляторы отопления, чтобы поддерживать комфортную температуру.</li>
+          </ul>
+          Снижение потребления газа:<br>
+          <ul>
+            <li>Использовать духовку и микроволновую печь вместо плиты.</li>
+            <li>Проверить состояние газовой плиты и газовой трубы на наличие утечек.</li>
+          </ul>
+          Снижение потребления бензина:
+          <ul>
+            <li>Использовать общественный транспорт или велосипед вместо автомобиля.</li>
+            <li>Правильно настроить и поддерживать автомобиль, чтобы он работал более эффективно.</li>
+          </ul>
+        Эти меры помогут снизить потребление воды, газа, электричества и бензина и позволят сократить расходы на коммунальные услуги и топливо, а также снизить негативное влияние на окружающую среду.</p>
+    </div>
+  </div>
+</div>
+
+<hr />
+<script>
+  function calculate() {
+    var result = "";
+    var electricity = parseFloat(document.getElementById("electricity").value);
+    var gas = parseFloat(document.getElementById("gas").value);
+    var fuel = parseFloat(document.getElementById("fuel").value);
+    var water = parseFloat(document.getElementById("water").value);
+
+    var avg_electricity = 225;
+    var avg_gas = 23;
+    var avg_fuel = 110;
+    var avg_water = 140;
+
+    if (
+      electricity > avg_electricity ||
+      gas > avg_gas ||
+      water > avg_water ||
+      fuel > avg_fuel
+    ) {
+        result = "Ваше потребление превышает средние значения для городского населения Казахстана (около 130-150 литров воды в день, около 20-25 кубических метров газа в месяц, около 200-250 киловатт-часов электричества в месяц, около 100-120 литров бензина в месяц)";
+    }
+
+    document.getElementById("result").innerHTML = result;
+  }
+</script>
+{% include "footer.html" %}

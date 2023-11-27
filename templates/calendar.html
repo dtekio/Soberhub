@@ -1,0 +1,47 @@
+{% include "header.html" %}
+<header
+  class="masthead"
+  style="background-image: url('{{ url_for('static', filename='img/calendar-bg.jpg')}}')"
+>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Календарь</h1>
+          <span class="subheading">Календарь со всеми событиями</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      {% if all_events|length %} {% for event in all_events %}
+      <a href="{{url_for('show_event', event_id = event.id)}}" class="">
+        <div class="fill_w card p-3">
+          <div class="">
+            <p class="small">{{event.date}}</p>
+          </div>
+          <span class="">{{event.heading}}</span>
+        </div>
+      </a>
+      {% endfor %} {% else %}
+      <hr />
+      <h6>В данный момент эта новости пусты, пожалуйста вернитесь позже!</h6>
+      <hr />
+      {% endif %} {% if current_user.id == 1: %}
+      <div class="clearfix">
+        <a
+          class="btn btn-primary float-right"
+          href="{{url_for('add_new_event')}}"
+          >+</a
+        >
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% include "footer.html" %}
