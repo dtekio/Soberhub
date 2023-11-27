@@ -1,4 +1,32 @@
 .person-card {
-    background-color: red;
-    height: 300px;
+    height: 800px;
+    padding: 100px;
+
+}
+
+.carta {
+    width: 900px;
+    height: 600px;
+    margin: auto;
+    background-color: white;
+    border-radius: 15%;
+}
+
+.carta-text {
+    padding: 5%;
+    height: 100%;
+}
+
+.carta-img {
+    height: 100%;
+    padding-left: 50px; 
+    
+}
+
+.card-body {
+    transition: 2s;
+}
+
+.card-body:hover {
+    background-image: linear-gradient(to bottom right, #FFBF5C, #FFE897);
 }

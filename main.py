@@ -8,8 +8,6 @@ from flask_ckeditor import CKEditor
 from flask_sqlalchemy import SQLAlchemy
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
-from sqlalchemy.orm import relationship
-from werkzeug.security import check_password_hash, generate_password_hash
 
 from forms import ContactForm
 
